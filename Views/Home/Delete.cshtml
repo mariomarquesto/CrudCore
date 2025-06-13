@@ -1,0 +1,31 @@
+﻿@model CrudCore.Models.Empleado
+
+@{
+    ViewData["Title"] = "Eliminar Empleado";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<h4>¿Estás seguro de que deseas eliminar el siguiente empleado?</h4>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Nombre</dt>
+        <dd class="col-sm-10">@Model.NombreCompleto</dd>
+
+        <dt class="col-sm-2">Correo</dt>
+        <dd class="col-sm-10">@Model.Correo</dd>
+
+        <dt class="col-sm-2">Teléfono</dt>
+        <dd class="col-sm-10">@Model.Telefono</dd>
+
+        <dt class="col-sm-2">Cargo</dt>
+        <dd class="col-sm-10">@Model.IdCargoNavigation?.Descricion</dd>
+    </dl>
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="IdEmpleado" />
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
